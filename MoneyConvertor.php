@@ -60,6 +60,10 @@ final class MoneyConvertor {
 
 	public function convert($numberStr) {
 		
+		//处理小数位为0
+		if(preg_match('/^[0-9]+\.[0]+$/',$numberStr))
+			$numberStr = intval($numberStr);
+		
 		//补齐类似.5这样的无整数位数字
 		if(substr($numberStr, 0, 1) == '.')
 			number_format($numberStr);
