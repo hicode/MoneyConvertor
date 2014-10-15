@@ -43,7 +43,9 @@
 					'1.5',
 					'50000',
 					65001.05,
-					101010101011.01
+					101010101011.01,
+					'1,999,999,999',
+					'.5'
 				);
 
 				$moneyObj = new MoneyConvertor();
@@ -54,7 +56,7 @@
 					$output .= "<tr>";
 					$output .= "<td style=\"text-align:left\">" . ($key + 1) . "</td>";
 					$output .= "<td style=\"text-align:left\">￥ " . $value . "</td>";
-					$output .= "<td style=\"text-align:left\">人民币(大写) " . $moneyObj->convert($value) . "</td>";
+					$output .= "<td style=\"text-align:left\"><em style='font-style:normal;margin-right:7px;'>人民币(大写)</em> " . $moneyObj->convert($value) . "</td>";
 					$output .= "</tr>";
 				}
 

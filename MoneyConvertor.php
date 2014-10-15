@@ -59,6 +59,14 @@ final class MoneyConvertor {
 	 */
 
 	public function convert($numberStr) {
+		
+		//补齐类似.5这样的无整数位数字
+		if(substr($numberStr, 0, 1) == '.')
+			number_format($numberStr);
+		
+		//如果带逗号分隔符的数字
+		if(strpos($numberStr, ','))
+			$numberStr = str_replace(",","",$numberStr);
 
 		//判断是否为数字
 		if (!is_numeric($numberStr))
@@ -154,7 +162,7 @@ final class MoneyConvertor {
 	function str_reverse($str) {
 		//判断输入的是不是utf8类型的字符，否则退出
 		if (!is_string($str) || !mb_check_encoding($str, 'UTF-8')) {
-			exit("输入类型不是UTF8类型的字符串");
+			return;
 		}
 		$array = array();
 		//将字符串存入数组
