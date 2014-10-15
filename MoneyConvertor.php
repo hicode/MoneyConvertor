@@ -60,10 +60,6 @@ final class MoneyConvertor {
 
 	public function convert($numberStr) {
 		
-		//判断是否为数字
-		if (!is_numeric($numberStr))
-			return '不是有效的货币数值';
-		
 		//处理小数位为0
 		if(preg_match('/^[0-9]+\.[0]+$/',$numberStr))
 			$numberStr = intval($numberStr);
@@ -75,6 +71,10 @@ final class MoneyConvertor {
 		//如果带逗号分隔符的数字
 		if(strpos($numberStr, ','))
 			$numberStr = str_replace(",","",$numberStr);
+		
+		//判断是否为数字
+		if (!is_numeric($numberStr))
+			return '不是有效的货币数值';
 
 		//分差整数与浮点位，整数和小数部分分开，分别进行转换
 		$cutedNumber = explode('.', (string)$numberStr);
