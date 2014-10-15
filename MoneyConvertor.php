@@ -90,6 +90,8 @@ final class MoneyConvertor {
 	 * @return 	$this
 	 */
 	private function convertInteger($integer, $without_fractional = false) {
+		$resultString = null;
+			
 		for ($i = 0; $i < strlen($integer); $i++) {
 			$resultString .= $this->I_UNIT_STR[$i];
 			$resultString .= $this->NUMBER_STR[substr(strrev($integer), $i, 1)];
@@ -108,6 +110,9 @@ final class MoneyConvertor {
 	 * @return 	$this
 	 */
 	private function convertDecimal($decimal) {
+		
+		$resultString = null;
+		
 		for ($i = 0; $i < strlen($decimal); $i++) {
 			$resultString .= $this->NUMBER_STR[substr($decimal, $i, 1)];
 			$resultString .= $this->D_UNIT_STR[$i];
@@ -146,7 +151,7 @@ final class MoneyConvertor {
 	 * @param 	$str	需要转换的UTF-8字符串
 	 * @return 	void
 	 */
-	function str_reverse(string $str) {
+	function str_reverse($str) {
 		//判断输入的是不是utf8类型的字符，否则退出
 		if (!is_string($str) || !mb_check_encoding($str, 'UTF-8')) {
 			exit("输入类型不是UTF8类型的字符串");
