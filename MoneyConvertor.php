@@ -75,7 +75,22 @@ final class MoneyConvertor {
 		//判断是否为数字
 		if (!is_numeric($numberStr))
 			return '不是有效的货币数值';
-
+		
+		//执行转换
+		self::convertor($numberStr);
+		
+		//返回转换结果
+		return $this->resultString;
+	}
+	
+	
+	/**
+	 * 执行转换
+	 * ---------------------------------------------------
+	 * @param	$numberStr		将要转换的小写数字金额
+	 * @return 	void
+	 */
+	private function convertor($numberStr){
 		//分差整数与浮点位，整数和小数部分分开，分别进行转换
 		$cutedNumber = explode('.', (string)$numberStr);
 
@@ -89,9 +104,9 @@ final class MoneyConvertor {
 
 		//去除无用零字符
 		self::removeZero();
-
-		return $this->resultString;
 	}
+	
+	
 
 	/**
 	 * 对整数部分进行转换
