@@ -20,5 +20,12 @@ MoneyConvertor 是专门对人民币进行大小写转换的类，该方法可�
 ```php
 require __DIR__ . '/MoneyConvertor.php';
 $mc = new MoneyConvertor();
+//数字类型
 echo $mc->convert(1000.00);
+//字符串类型
+echo $mc->convert('1.322');
+//特殊字符串逗号分割类型
+echo $mc->convert('100,000,000.00');
+//特殊字符串无整数位类型
+echo $mc->convert('.5');
 ```
